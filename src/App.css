@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inconsolata:wght@200..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Science+Gothic:wght@100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Inconsolata", monospace;
+}
+
+.container {
+    background-color: hsl(243, 96%, 9%);
+    padding: 40px 60px;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cabecalho .imagem-logo {
+    width: 150px;
+    height: 50px;
+}
+.menu {
+    position: relative;
+}
+
+
+.titulo-menu{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: aliceblue;
+    padding: 10px;
+    background-color: hsl(243, 23%, 30%);
+    border-radius: 8px;
+}
+
+.titulo-menu p {
+    cursor: pointer;
+}
+
+.titulo-menu img {
+    cursor: pointer;
+}
+
+.icone {
+    width: 14px;
+    height: 14px;
+}
+
+.itens {
+    position: absolute;
+    margin-top: 25px;
+    right: 1px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    top: 20px;
+    background-color: hsl(243, 23%, 24%);
+    padding: 5px;
+    width: auto;
+    border-radius: 8px;
+    border: 1px solid hsl(243, 23%, 30%);
+}
+.borda {
+    border: 1px solid hsl(243, 23%, 30%);
+}
+
+.ocultar-itens {
+    display: none;
+}
+.desocultar-itens {
+    display: block;
+}
+
+.itens .item-ativo {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    padding: 10px;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: hsl(243, 23%, 30%);
+    border-radius: 7px;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 10px 20px;
+    }
+    .cabecalho .imagem-logo {
+        width: 130px;
+    }
+    
+}

@@ -1,0 +1,75 @@
+.buscador {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.buscador h1 {
+    color: aliceblue;
+}
+
+.buscador .input-busca-clima form{
+    display: flex;
+    gap: 12px;
+}
+
+.buscador .input-busca-clima form .input-img {
+    display: flex;
+}
+
+.buscador .input-busca-clima input{
+    padding: 10px 9px;
+    width: 500px;
+    border-radius: 0 7px 7px 0;
+    border: none;
+    background-color: hsl(243, 27%, 20%);
+    color:  hsl(0, 0%, 100%);
+}
+
+.buscador .input-busca-clima .lupa {
+    display: flex;
+    padding: 10px 9px;
+    width: 30px;
+    height: 35px;
+    border-radius: 7px 0 0 7px;
+    background-color: hsl(243, 27%, 20%);
+}
+
+.buscador .input-busca-clima .lupa img {
+    width: 15px;
+}
+
+.buscador .input-busca-clima input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.buscador .input-busca-clima button {
+    background-color: hsl(233, 67%, 56%);
+    border: none;
+    border-radius: 7px;
+    color:  hsl(0, 0%, 100%);
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 576px){
+    .buscador .input-busca-clima{
+        display: flex;
+        justify-content: center;
+    }
+    .buscador .input-busca-clima input{
+        width: 310px;
+    }
+    .buscador .input-busca-clima button {
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .buscador .input-busca-clima form {
+        flex-direction: column;
+    }
+
+}
