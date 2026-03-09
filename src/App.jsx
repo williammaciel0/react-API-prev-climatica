@@ -2,6 +2,7 @@ import './App.css'
 import { Buscador } from './components/Buscador'
 import { Clima } from './components/Clima'
 import { useState } from 'react'
+import logo from '../public/images/logo.svg'
 
 function App() {
   const ocultarMenu = () => {
@@ -25,7 +26,7 @@ function App() {
     <>
       <div className="container">
             <section className='cabecalho'>
-                <img className='imagem-logo' src="../public/images/logo.svg" alt="previsao do tempo" />
+                <img className='imagem-logo' src={logo} alt="previsao do tempo" />
                 <div className='menu'>
                   
                   <div className='titulo-menu'>
