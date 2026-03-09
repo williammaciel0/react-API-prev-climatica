@@ -1,6 +1,7 @@
-// KEY: 
 import { useState } from "react";
 import "./style.css"
+
+import iconSearch from "../../../public/images/icon-search.svg"
 
 export const Buscador = ({ getInformacoes }) => {
     const keyAPI = '9e9185986bb9c73b4f3deb63c2b215b0'
@@ -44,7 +45,7 @@ export const Buscador = ({ getInformacoes }) => {
                 <form onSubmit={getCidade}>
                     <div className="input-img">
                         <div className="lupa">
-                            <img src="../../../public/images/icon-search.svg" alt="" />
+                            <img src={iconSearch} alt="icon luta" />
                         </div>
                         <input
                             type="text"

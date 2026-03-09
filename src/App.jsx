@@ -2,7 +2,12 @@ import './App.css'
 import { Buscador } from './components/Buscador'
 import { Clima } from './components/Clima'
 import { useState } from 'react'
+
+// importação de imagens para carregar no github pages
 import logo from '../public/images/logo.svg'
+import iconUnits from '../public/images/icon-units.svg'
+import iconDropdown from '../public/images/icon-dropdown.svg'
+import iconCheckmark from '../public/images/icon-checkmark.svg'
 
 function App() {
   const ocultarMenu = () => {
@@ -30,23 +35,23 @@ function App() {
                 <div className='menu'>
                   
                   <div className='titulo-menu'>
-                    <img className='icone' src="../public/images/icon-units.svg" alt="units" />         
+                    <img className='icone' src={iconUnits} alt="units" />         
                     <p>Units</p>
-                    <img onClick={ocultarMenu} className='icone' src="../public/images/icon-dropdown.svg" alt="" />
+                    <img onClick={ocultarMenu} className='icone' src={iconDropdown} />
                   </div>
 
                   <div className='itens ocultar-itens'>
                     <div className='item-ativo'>Mudar para Imperial</div>
                     <div className='item-ativo titulo-item'>Temperatura</div>
-                    <div className='item-ativo'>Celsius (°C) <img className='icone' src="../public/images/icon-checkmark.svg" alt="Icon checkmark" /></div>
+                    <div className='item-ativo'>Celsius (°C) <img className='icone' src={iconCheckmark} alt="Icon checkmark" /></div>
                     <div className='item-ativo'>Fahrenheit (°F)</div>
                     <div className='borda'></div>
                     <div className='item-ativo titulo-item'>Wind Speed</div>
-                    <div className='item-ativo'>km/h <img className='icone' src="../public/images/icon-checkmark.svg" alt="Icon checkmark" /></div>
+                    <div className='item-ativo'>km/h <img className='icone' src={iconCheckmark} alt="Icon checkmark" /></div>
                     <div className='item-ativo'>mph</div>
                     <div className='borda'></div>
                     <div className='item-ativo titulo-item'>Precipitation</div>
-                    <div className='item-ativo' >Millimetetros (mm) <img className='icone' src="../public/images/icon-checkmark.svg" alt="Icon checkmark" /></div>
+                    <div className='item-ativo' >Millimetetros (mm) <img className='icone' src={iconCheckmark} alt="Icon checkmark" /></div>
                     <div className='item-ativo' >Inches (in)</div>
                   </div>
                 </div>

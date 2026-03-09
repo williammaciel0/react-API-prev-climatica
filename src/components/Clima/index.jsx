@@ -1,25 +1,37 @@
 import "./style.css"
 
+import iconSunny from "../../../public/images/icon-sunny.webp"
+import iconOvercast from "../../../public/images/icon-overcast.webp"
+import iconSnow from "../../../public/images/icon-snow.webp"
+import iconStorm from "../../../public/images/icon-storm.webp"
+import iconCloudy from "../../../public/images/icon-patly-cloudy.webp"
+import iconRain from "../../../public/images/icon-rain.webp"
+import iconDrizzle from "../../../public/images/icon-drizzle.webp"
+import iconFog from "../../../public/images/icon-fog.webpwebp"
+import iconError from "../../../public/images/icon-error.svg"
+import bgTodaySmall from "../../../public/images/bg-today-small.svg"
+import bgTodayLarge from "../../../public/images/bg-today-large.svg"
+
 export const Clima = (dados) => {
     console.log(dados)
     function getIconeTempo() {
         let caminho = ''
         if (dados.dados.descricao === 'céu limpo') {
-            caminho = '../../../public/images/icon-sunny.webp'
+            caminho = {iconSunny}
         } else if (dados.dados.descricao === 'nublado') {
-            caminho = '../../../public/images/icon-overcast.webp'
+            caminho = {iconOvercast}
         } else if (dados.dados.descricao === 'neve') {
-            caminho = '../../../public/images/icon-snow.webp'
+            caminho = {iconSnow}
         } else if (dados.dados.descricao === 'tempestade') {
-            caminho = '../../../public/images/icon-storm.webp'
+            caminho = {iconStorm}
         } else if (dados.dados.descricao === 'nuven-sol') {
-            caminho = '../../../public/images/icon-patly-cloudy.webp'
+            caminho = {iconCloudy}
         } else if (dados.dados.descricao === 'chuva leve') {
-            caminho = '../../../public/images/icon-rain.webp'
+            caminho = {iconRain}
         } else if (dados.dados.descricao === "chuva moderada") {
-            caminho = '../../../public/images/icon-drizzle.webp'
+            caminho = {iconDrizzle}
         } else if (dados.dados.descricao === "nuvens dispersas" || dados.dados.descricao === "algumas nuvens") {
-            caminho = '../../../public/images/icon-fog.webp'
+            caminho = {iconFog}
         }
         return caminho
     }
@@ -44,7 +56,7 @@ export const Clima = (dados) => {
         console.log("vazio") 
         return (
             <section className="page-error">
-                <img src="../../../public/images/icon-error.svg" alt="" />
+                <img src={iconError} alt="icone de Error" />
                 <p className="titulo">Algo deu errado!</p>
                 <p>Não foi possível conectar ao servidor (erro de API). Tente novamente em alguns instantes.</p>
             </section>
@@ -55,8 +67,8 @@ export const Clima = (dados) => {
             <section className="clima">
                 <div className="locais-e-detalhes">
                 <picture>
-                    <source className="imagem-pequena" srcset="../../../public/images/bg-today-small.svg" media="(max-width: 600px)" />
-                    <img src="../../../public/images/bg-today-large.svg" alt="" />
+                    <source className="imagem-pequena" srcset={bgTodaySmall} media="(max-width: 600px)" />
+                    <img src={bgTodayLarge} alt="imagem de fundo grande" />
                 </picture>
                     <div className="dados-local">
                         <div className="info-regiao">
