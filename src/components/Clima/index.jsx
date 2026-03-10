@@ -4,10 +4,10 @@ import iconSunny from "../../../public/images/icon-sunny.webp"
 import iconOvercast from "../../../public/images/icon-overcast.webp"
 import iconSnow from "../../../public/images/icon-snow.webp"
 import iconStorm from "../../../public/images/icon-storm.webp"
-import iconCloudy from "../../../public/images/icon-patly-cloudy.webp"
+import iconCloudy from "../../../public/images/icon-partly-cloudy.webp"
 import iconRain from "../../../public/images/icon-rain.webp"
 import iconDrizzle from "../../../public/images/icon-drizzle.webp"
-import iconFog from "../../../public/images/icon-fog.webpwebp"
+import iconFog from "../../../public/images/icon-fog.webp"
 import iconError from "../../../public/images/icon-error.svg"
 import bgTodaySmall from "../../../public/images/bg-today-small.svg"
 import bgTodayLarge from "../../../public/images/bg-today-large.svg"
@@ -17,21 +17,21 @@ export const Clima = (dados) => {
     function getIconeTempo() {
         let caminho = ''
         if (dados.dados.descricao === 'céu limpo') {
-            caminho = {iconSunny}
+            caminho = iconSunny
         } else if (dados.dados.descricao === 'nublado') {
-            caminho = {iconOvercast}
+            caminho = iconOvercast
         } else if (dados.dados.descricao === 'neve') {
-            caminho = {iconSnow}
-        } else if (dados.dados.descricao === 'tempestade') {
-            caminho = {iconStorm}
+            caminho = iconSnow
+        } else if (dados.dados.descricao === 'tempestade' || dados.dados.descricao === 'chuva forte') {
+            caminho = iconStorm
         } else if (dados.dados.descricao === 'nuven-sol') {
-            caminho = {iconCloudy}
+            caminho = iconCloudy
         } else if (dados.dados.descricao === 'chuva leve') {
-            caminho = {iconRain}
+            caminho = iconRain
         } else if (dados.dados.descricao === "chuva moderada") {
-            caminho = {iconDrizzle}
+            caminho = iconDrizzle
         } else if (dados.dados.descricao === "nuvens dispersas" || dados.dados.descricao === "algumas nuvens") {
-            caminho = {iconFog}
+            caminho = iconFog
         }
         return caminho
     }
