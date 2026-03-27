@@ -29,11 +29,17 @@
     align-items: center;
     color: aliceblue;
     margin-top: 100px;
+    padding: 50px;
+}
+
+.dados-local .info-regiao .cidade {
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .icon-e-temperadura p{
     font-size: 50px;
-    font-weight: 600;
+    font-weight: 800;
 }
 
 .icon-e-temperadura {
@@ -81,6 +87,8 @@
 
 .previsao-diaria .dias {
     display: flex;
+    width: 600px;
+    height: auto;
     gap: 15px;
 }
 
@@ -123,12 +131,20 @@
         width: 343px;
         height: auto;
     }
+    
+    .previsao-diaria .dias {
+        display: flex;
+        width: 345px;
+        gap: 10px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
 
     .dados-local {
         flex-direction: column;
         width: 343px;
         padding: 10px;
-        margin-bottom: 120px;
+        margin-bottom: 300px;
     }
 
     .dados-local .info-regiao {
@@ -139,6 +155,12 @@
         width: 343px;
         gap: 10px;
         flex-wrap: wrap;
+    }
+    .previsao-diaria {
+        width: 343px;
+    }
+    .page-error {
+        text-align: center;
     }
 }
 
