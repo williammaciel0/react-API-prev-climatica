@@ -136,7 +136,7 @@
         display: flex;
         width: 345px;
         gap: 10px;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
     }
 
