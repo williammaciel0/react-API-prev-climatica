@@ -28,6 +28,29 @@ export const Buscador = ({ setState }) => {
         if (cidade !== '') {
             const data = chamadaDaAPITempo(cidade)
 
+            const weatherDescriptions = {
+                0: "Céu limpo",
+                1: "Principalmente limpo",
+                2: "Parcialmente nublado",
+                3: "Nublado",
+                45: "Nevoeiro",
+                48: "Geada/Nevoeiro congelante",
+                51: "Garoa leve",
+                53: "Garoa",
+                55: "Garoa forte",
+                61: "Chuva leve",
+                63: "Chuva",
+                65: "Chuva forte",
+                80: "Chuva leve (pancadas)",
+                81: "Pancadas de chuva",
+                82: "Fortes pancadas de chuva",
+                85: "Pancadas de neve",
+                86: "Fortes pancadas de neve",
+                95: "Trovoada",
+                96: "Trovoada com granizo leve",
+                99: "Trovoada com granizo forte"
+            };
+
             data.then((data) => {
                 const umidade = data['main'].humidity
                 const temperatura = data['main'].temp
@@ -47,37 +70,43 @@ export const Buscador = ({ setState }) => {
                             dia: data['daily'].time[0],
                             temperaturaMaxima: data['daily'].temperature_2m_max[0],
                             temperaturaMinima: data['daily'].temperature_2m_min[0],
-                            descricao: data['daily'].weathercode[0]
+                            descricao: weatherDescriptions[data['daily'].weathercode[0]]
                         },
                         dia2: {
                             dia: data['daily'].time[1],
                             temperaturaMaxima: data['daily'].temperature_2m_max[1],
-                            temperaturaMinima: data['daily'].temperature_2m_min[1]
+                            temperaturaMinima: data['daily'].temperature_2m_min[1],
+                            descricao: weatherDescriptions[data['daily'].weathercode[1]]
                         },
                          dia3: {
                             dia: data['daily'].time[2],
                             temperaturaMaxima: data['daily'].temperature_2m_max[2],
-                            temperaturaMinima: data['daily'].temperature_2m_min[2]
+                            temperaturaMinima: data['daily'].temperature_2m_min[2],
+                            descricao: weatherDescriptions[data['daily'].weathercode[2]]
                         },
                          dia4: {
                             dia: data['daily'].time[3],
                             temperaturaMaxima: data['daily'].temperature_2m_max[3],
-                            temperaturaMinima: data['daily'].temperature_2m_min[3]
+                            temperaturaMinima: data['daily'].temperature_2m_min[3],
+                            descricao: weatherDescriptions[data['daily'].weathercode[3]]
                         },
                          dia5: {
                             dia: data['daily'].time[4],
                             temperaturaMaxima: data['daily'].temperature_2m_max[4],
-                            temperaturaMinima: data['daily'].temperature_2m_min[4]
+                            temperaturaMinima: data['daily'].temperature_2m_min[4],
+                            descricao: weatherDescriptions[data['daily'].weathercode[4]]
                         },
                          dia6: {
                             dia: data['daily'].time[5],
                             temperaturaMaxima: data['daily'].temperature_2m_max[5],
-                            temperaturaMinima: data['daily'].temperature_2m_min[5]
+                            temperaturaMinima: data['daily'].temperature_2m_min[5],
+                            descricao: weatherDescriptions[data['daily'].weathercode[5]]
                         },
                          dia7: {
                             dia: data['daily'].time[6],
                             temperaturaMaxima: data['daily'].temperature_2m_max[6],
-                            temperaturaMinima: data['daily'].temperature_2m_min[6]
+                            temperaturaMinima: data['daily'].temperature_2m_min[6],
+                            descricao: weatherDescriptions[data['daily'].weathercode[6]]
                         },
                     }
                     setState(e => ({...e, previsao7Dias: objeto7dias}))

@@ -14,23 +14,24 @@ import bgTodayLarge from "../../../public/images/bg-today-large.svg"
 export const Clima = (dados) => {
     console.log(dados)
     // const dia1 = dados.dados.previsao7Dias.dia1.temperaturaMaxima
-    function getIconeTempo() {
+    function getIconeTempo(iconReferencia) {
+        console.log(iconReferencia)
         let caminho = ''
-        if (dados.dados.dados.descricao === 'céu limpo' || 'Principalmente limpo') {
+        if (iconReferencia === 'céu limpo' || iconReferencia === 'Principalmente limpo') {
             caminho = iconSunny
-        } else if (dados.dados.dados.descricao === 'nublado' || 'Parcialmente nublado' || 'Nevoeiro') {
+        } else if (iconReferencia === 'nublado' || iconReferencia === 'Parcialmente nublado' || iconReferencia === 'Nevoeiro' || iconReferencia === 'Nublado' ) {
             caminho = iconOvercast
-        } else if (dados.dados.dados.descricao === 'neve' || 'Geada/Nevoeiro congelante') {
+        } else if (iconReferencia === 'neve' || iconReferencia === 'Geada/Nevoeiro congelante') {
             caminho = iconSnow
-        } else if (dados.dados.dados.descricao === 'tempestade' || dados.dados.dados.descricao === 'chuva forte' || dados.dados.dados.descricao === 'trovoadas' || 'Chuva forte' || 'Pancadas de chuva' || 'Fortes Pancadas de chuva' || 'Trovoada' || 'Trovoada com granizo leve' || 'Trovoada com granizo forte') {
+        } else if (iconReferencia === 'tempestade' || iconReferencia === 'chuva forte' || iconReferencia === 'trovoadas' || iconReferencia === 'Chuva forte' || iconReferencia === 'Pancadas de chuva' || iconReferencia === 'Fortes Pancadas de chuva' || iconReferencia === 'Trovoada' || iconReferencia === 'Trovoada com granizo leve' || iconReferencia === 'Trovoada com granizo forte') {
             caminho = iconStorm
-        } else if (dados.dados.dados.descricao === 'nuven-sol') {
+        } else if (iconReferencia === 'nuven-sol') {
             caminho = iconCloudy
-        } else if (dados.dados.dados.descricao === 'chuva leve' || 'Garoa' || 'Garoa leve' || 'Garoa forte') {
+        } else if (iconReferencia === 'chuva leve' || iconReferencia === 'Garoa' || iconReferencia === 'Chuva leve (pancadas)' || iconReferencia === 'Garoa leve' || iconReferencia === 'Garoa forte') {
             caminho = iconRain
-        } else if (dados.dados.dados.descricao === "chuva moderada" || "Chuva") {
+        } else if (iconReferencia === "chuva moderada" || iconReferencia === "Chuva") {
             caminho = iconDrizzle
-        } else if (dados.dados.dados.descricao === "nuvens dispersas" || dados.dados.dados.descricao === "algumas nuvens" || '') {
+        } else if (iconReferencia === "nuvens dispersas" || iconReferencia === "algumas nuvens" || iconReferencia === '') {
             caminho = iconFog
         }
         return caminho
@@ -82,7 +83,6 @@ export const Clima = (dados) => {
     }
    
     const dataHoje = getData()
-    let caminho = getIconeTempo()
     let temperatura = converterTemperatura()
     let velocidade = converterVelocidade()
     let volume = converteVolume()
@@ -101,19 +101,20 @@ export const Clima = (dados) => {
             <section className="clima">
                 <div className="locais-e-detalhes">
                 <picture>
-                    <source className="imagem-pequena" srcset={bgTodaySmall} media="(max-width: 600px)" />
-                    <img src={bgTodayLarge} alt="imagem de fundo grande" />
-                </picture>
                     <div className="dados-local">
                         <div className="info-regiao">
                             <p className="cidade">{dados.dados.dados.nome}, {dados.dados.dados.bandeira}</p>
                             <p>{dataHoje}</p>
                         </div>
                         <div className="icon-e-temperadura">
-                            <img className="emoji-clima" src={caminho} alt="emoji do clima" />
+                            <img className="emoji-clima" src={getIconeTempo(dados.dados.dados.descricao)} alt="emoji do clima" />
                             <p className="temperatura-atual">{Math.round(temperatura.resultTemperatura)}°</p>
                         </div>
                     </div>
+                    <source className="imagem-pequena" srcset={bgTodaySmall} media="(max-width: 600px)" />
+                    <img src={bgTodayLarge} alt="imagem de fundo grande" />
+                </picture>
+                    
 
                     <div className="dados-quantitativos">
                         <div className="quantidades">
@@ -141,7 +142,7 @@ export const Clima = (dados) => {
                                     
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia1.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia1.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia1.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia1.temperaturaMinima)}°</p> 
@@ -149,7 +150,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia2.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia2.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia2.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia2.temperaturaMinima)}°</p> 
@@ -157,7 +158,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia3.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia3.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia3.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia3.temperaturaMinima)}°</p> 
@@ -165,7 +166,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia4.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia4.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia4.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia4.temperaturaMinima)}°</p> 
@@ -173,7 +174,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia5.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia5.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia5.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia5.temperaturaMinima)}°</p> 
@@ -181,7 +182,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia6.dia)}</p>
-                                            <span>imagem</span>
+                                            <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia6.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia6.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia6.temperaturaMinima)}°</p> 
@@ -189,7 +190,7 @@ export const Clima = (dados) => {
                                         </div>
                                         <div className="dia">
                                             <p>{getData7Dias(dados.dados.previsao7Dias.dia7.dia)}</p>
-                                            <span>imagem</span>
+                                           <img  className="icon7Dias" src={getIconeTempo(dados.dados.previsao7Dias.dia7.descricao)} alt="emoji do clima" />
                                             <div className="percentual">
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia7.temperaturaMaxima)}°</p>
                                                 <p>{Math.round(dados.dados.previsao7Dias.dia7.temperaturaMinima)}°</p> 

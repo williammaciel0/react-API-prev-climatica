@@ -5,7 +5,15 @@
     margin-top: 40px;
 }
 
-.locais-e-detalhes {
+.locais-e-detalhes  {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.locais-e-detalhes picture {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -14,23 +22,23 @@
     gap: 20px;
 }
 
+.locais-e-detalhes picture .dados-local {
+    position: absolute;
+    display: flex;
+    width: 800px;
+    height: 280px;
+    justify-content: space-around;
+    align-items: center;
+    color: aliceblue;
+    /* margin-top: 100px; */
+    padding: 50px;
+}
 .detalhes-do-local {
     width: 800px;
     height: 280px;
 }
 
-.dados-local {
-    position: absolute;
-    display: flex;
-    width: 800px;
-    height: 280px;
-    bottom: 180px;
-    justify-content: space-around;
-    align-items: center;
-    color: aliceblue;
-    margin-top: 100px;
-    padding: 50px;
-}
+
 
 .dados-local .info-regiao .cidade {
     font-size: 30px;
@@ -101,6 +109,10 @@
     width: 100px;
 }
 
+.dia img {
+    width: 45px;
+}
+
 .percentual {
     display: flex;
     justify-content: space-between;
@@ -144,7 +156,7 @@
         flex-direction: column;
         width: 343px;
         padding: 10px;
-        margin-bottom: 300px;
+        /* margin-bottom: 380px; */
     }
 
     .dados-local .info-regiao {
