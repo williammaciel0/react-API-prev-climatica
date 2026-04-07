@@ -17,7 +17,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     gap: 20px;
 }
@@ -25,12 +25,11 @@
 .locais-e-detalhes picture .dados-local {
     position: absolute;
     display: flex;
-    width: 800px;
+    width: 700px;
     height: 280px;
     justify-content: space-around;
     align-items: center;
     color: aliceblue;
-    /* margin-top: 100px; */
     padding: 50px;
 }
 .detalhes-do-local {
@@ -63,17 +62,38 @@
     width: 600px;
 }
 
-.horarios-e-dias {
+.horarios {
     border-radius: 12px;
-    width: 250px;
+    width: 100%;
     padding: 15px;
     background-color: hsl(243, 27%, 20%);
+    max-height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.horarios .hora {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: aliceblue;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: hsl(243, 23%, 24%);
+    border: 1px solid hsl(240, 18%, 30%);
+    font-weight: 600;
+}
+
+.horarios .hora .informacoes {
+    display: flex;
+    gap: 20px;
 }
 
 .dados-quantitativos {
     width: 600px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .quantidades {
@@ -87,6 +107,7 @@
     border: 1px solid hsl(240, 18%, 30%);
     background-color: hsl(243, 27%, 20%);
     padding: 10px;
+    font-size: 23px;
 }
 
 .previsao-diaria {
@@ -146,7 +167,8 @@
     
     .previsao-diaria .dias {
         display: flex;
-        width: 345px;
+        width: 100%;
+        max-width: 345px;
         gap: 10px;
         justify-content: center;
         flex-wrap: wrap;
@@ -154,7 +176,8 @@
 
     .dados-local {
         flex-direction: column;
-        width: 343px;
+        width: 100%;
+        max-width: 343px;
         padding: 10px;
         /* margin-bottom: 380px; */
     }
@@ -164,12 +187,20 @@
     }
     .dados-quantitativos {
         display: flex;
-        width: 343px;
+        width: 100%;
+        max-width: 343px;
         gap: 10px;
         flex-wrap: wrap;
     }
     .previsao-diaria {
-        width: 343px;
+        width: 100%;
+        max-width: 343px;
+    }
+    .horarios {
+        width: 100%;
+        max-width: 343px;
+        max-height: 400px;
+        overflow-y: auto;
     }
     .page-error {
         text-align: center;

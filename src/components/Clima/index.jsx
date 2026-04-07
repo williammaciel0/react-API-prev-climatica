@@ -12,27 +12,28 @@ import bgTodaySmall from "../../../public/images/bg-today-small.svg"
 import bgTodayLarge from "../../../public/images/bg-today-large.svg"
 
 export const Clima = (dados) => {
-    console.log(dados)
-    // const dia1 = dados.dados.previsao7Dias.dia1.temperaturaMaxima
+    console.log(dados.dados.previsaoProximasHoras)
+    const previsaoPorHora = dados.dados.previsaoProximasHoras
     function getIconeTempo(iconReferencia) {
-        console.log(iconReferencia)
         let caminho = ''
         if (iconReferencia === 'céu limpo' || iconReferencia === 'Principalmente limpo') {
             caminho = iconSunny
         } else if (iconReferencia === 'nublado' || iconReferencia === 'Parcialmente nublado' || iconReferencia === 'Nevoeiro' || iconReferencia === 'Nublado' ) {
             caminho = iconOvercast
-        } else if (iconReferencia === 'neve' || iconReferencia === 'Geada/Nevoeiro congelante') {
+        } else if (iconReferencia === 'neve' || iconReferencia === 'Neve' || iconReferencia === 'Geada/Nevoeiro congelante') {
             caminho = iconSnow
         } else if (iconReferencia === 'tempestade' || iconReferencia === 'chuva forte' || iconReferencia === 'trovoadas' || iconReferencia === 'Chuva forte' || iconReferencia === 'Pancadas de chuva' || iconReferencia === 'Fortes Pancadas de chuva' || iconReferencia === 'Trovoada' || iconReferencia === 'Trovoada com granizo leve' || iconReferencia === 'Trovoada com granizo forte') {
             caminho = iconStorm
         } else if (iconReferencia === 'nuven-sol') {
             caminho = iconCloudy
-        } else if (iconReferencia === 'chuva leve' || iconReferencia === 'Garoa' || iconReferencia === 'Chuva leve (pancadas)' || iconReferencia === 'Garoa leve' || iconReferencia === 'Garoa forte') {
+        } else if (iconReferencia === 'chuva leve' || iconReferencia === 'Garoa' || iconReferencia === 'Chuva leve (pancadas)' || iconReferencia === 'Garoa leve' || iconReferencia === 'Garoa forte' || iconReferencia ==='Chuva leve') {
             caminho = iconRain
         } else if (iconReferencia === "chuva moderada" || iconReferencia === "Chuva") {
             caminho = iconDrizzle
-        } else if (iconReferencia === "nuvens dispersas" || iconReferencia === "algumas nuvens" || iconReferencia === '') {
+        } else if (iconReferencia === "nuvens dispersas" || iconReferencia === "algumas nuvens") {
             caminho = iconFog
+        } else {
+            caminho = iconError
         }
         return caminho
     }
@@ -206,8 +207,30 @@ export const Clima = (dados) => {
                     </div>
                 </div>
 
-                <div className="horarios-e-dias">
-                    wefwe
+                <div className="horarios">
+                    {previsaoPorHora && previsaoPorHora.length > 0 ? (
+                        previsaoPorHora.slice(0, 24).map((horaData, index) => {
+                            const hora = new Date(horaData.hora).getHours();
+                            const descricao = horaData.descricao;
+                            return (
+                                <div key={index} className="hora">
+                                    <div className="informacoes">
+                                        <img style={{ width: '20px' }} src={getIconeTempo(descricao)} alt={descricao} />
+                                        <p>{hora} PM</p>
+                                    </div>
+                                    <p>{Math.round(horaData.temperatura)}°</p>
+                                </div>
+                            );
+                        })
+                    ) : (
+                        <div className="hora">
+                            <div className="informacoes">
+                                <img src={iconError} alt="" />
+                                <p>Carregando...</p>
+                            </div>
+                            <p>--°</p>
+                        </div>
+                    )}
                 </div>
             </section>
         )

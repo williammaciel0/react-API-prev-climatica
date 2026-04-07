@@ -5,15 +5,21 @@ import iconSearch from "../../../public/images/icon-search.svg"
 
 export const Buscador = ({ setState }) => {
 
+    async function getPrevisaoPorHora(latitude, longitude) {
+        const currentTime = new Date().toISOString().split('T')[0]
+        const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode&start_date=${currentTime}&end_date=${currentTime}&timezone=America%2FSao_Paulo`;
+        const response = await fetch(url);
+        const jsonData = await response.json(); // Aguarda a resposta da API
+        console.log('Dados recebidos da API:', jsonData.hourly);
+        return jsonData.hourly
+    }
     async function getAPI7Days(latitude, longitude) {
         const urlOpenMeteo = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode&timezone=America%2FSao_Paulo`;
         const response = await fetch(urlOpenMeteo)
         const data = await response.json()
-        console.log(data)
         return data
     }
 
-         
     async function chamadaDaAPITempo(city) {
         const keyAPI = '9e9185986bb9c73b4f3deb63c2b215b0' 
         const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${keyAPI}&units=metric&lang=pt_br`
@@ -22,7 +28,6 @@ export const Buscador = ({ setState }) => {
     }
 
     const [cidade, setCidade] = useState('')
-
     const getCidade = (event) => {
         event.preventDefault()
         if (cidade !== '') {
@@ -63,6 +68,11 @@ export const Buscador = ({ setState }) => {
                 const longitude = data['coord'].lon
 
                 const previsao7Dias = getAPI7Days(latitude, longitude)
+                const previsaoPorHora = getPrevisaoPorHora(latitude, longitude)
+                
+                // const resultadoDasHoras = {temperatura: previsaoPorHora.temperature_2m, hora: previsaoPorHora.time, descricao: previsaoPorHora.weathercode}
+                // setState(e => ({...e, previsaoProximasHoras: resultadoDasHoras}))
+
                 previsao7Dias.then((data) => {
                     
                     const objeto7dias = {
@@ -112,8 +122,22 @@ export const Buscador = ({ setState }) => {
                     setState(e => ({...e, previsao7Dias: objeto7dias}))
                     
                 })
+                const objetoPorHora  = []
+                previsaoPorHora.then((data)=>{
+                    for(let i = 0; i < 24; i++){
+                        objetoPorHora.push({
+                            hora: data.time[i],
+                            temperatura: data.temperature_2m[i],
+                            descricao:  weatherDescriptions[data.weathercode[i]]
+                        })
+                    }
+                    setState(e => ({...e, previsaoProximasHoras: objetoPorHora}))
+                })
+
                 const result = { nome, umidade, temperatura, sensacaoTermica, wind, descricao, bandeira, latitude, longitude}
                 setState(e => ({...e, dados: result}))
+            
+                
             });
 
         } else {

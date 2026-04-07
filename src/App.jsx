@@ -8,7 +8,8 @@ function App() {
   const [state, setState] = useState({
     dados: '',
     alternancias: '',
-    previsao7Dias: ''
+    previsao7Dias: '',
+    previsaoProximasHoras: ''
   })
   
   return (

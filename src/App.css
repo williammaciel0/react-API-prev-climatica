@@ -8,6 +8,13 @@
 
 .container {
     background-color: hsl(243, 96%, 9%);
-    padding: 40px 60px;
+    padding: 40px 50px;
+    overflow-x: hidden;
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 20px 10px;
+    }
 }
 
