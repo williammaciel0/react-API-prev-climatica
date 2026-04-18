@@ -79,6 +79,7 @@
     color: aliceblue;
     padding: 20px;
     border-radius: 6px;
+    margin-bottom: 20px;
     background-color: hsl(243, 23%, 24%);
     border: 1px solid hsl(240, 18%, 30%);
     font-weight: 600;
@@ -151,6 +152,34 @@
 
 .page-error .titulo {
     font-size: 40px;
+}
+
+.menu-horarios {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    color: aliceblue;
+    margin-bottom: 20px;
+}
+
+.menu-horarios select {
+    background-color: hsl(240, 18%, 30%);
+    border: none;
+    color: aliceblue;
+    padding: 10px;
+    border-radius: 10px;
+} 
+
+.menu-horarios select option {
+    background-color: hsl(243, 27%, 20%);
+    padding: 10px;
+}
+
+.menu-horarios select option:hover {
+    background-color: green;
+    border-radius: 5px;
 }
 
 @media (max-width: 576px){

@@ -10,7 +10,6 @@ export const Buscador = ({ setState }) => {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,precipitation,weathercode&start_date=${currentTime}&end_date=${currentTime}&timezone=America%2FSao_Paulo`;
         const response = await fetch(url);
         const jsonData = await response.json(); // Aguarda a resposta da API
-        console.log('Dados recebidos da API:', jsonData.hourly);
         return jsonData.hourly
     }
     async function getAPI7Days(latitude, longitude) {
