@@ -13,7 +13,6 @@ import bgTodaySmall from "../../../public/images/bg-today-small.svg"
 import bgTodayLarge from "../../../public/images/bg-today-large.svg"
 
 export const Clima = (dados) => {
-    console.log(dados)
     const previsaoPorHora = dados.dados.previsaoProximasHoras
     const [renderizadorResult, setRenderizadorResult] = useState(null)
     function getIconeTempo(iconReferencia) {
